@@ -17,19 +17,66 @@
                 CBSE Class Videos
             </button>
         </div>
-        <!-- Add the YouTube button here -->
-        <a href="https://www.youtube.com/" target="_blank">
-            <img src="youtube_icon.png" alt="YouTube">
-        </a>
+        <!-- Embedded YouTube player -->
+        <div id="youtubePlayer"></div>
     </div>
     <div id="videosContainer"></div>
     <div id="loadMoreButton">
         <button onclick="loadMoreVideos()">Load More</button>
     </div>
     <script>
+        // JavaScript to display greeting based on time of day
+        const now = new Date();
+        const hour = now.getHours();
+        let greeting;
+
+        if (hour < 12) {
+            greeting = "Good morning Student!";
+        } else if (hour < 18) {
+            greeting = "Good afternoon Student!";
+        } else {
+            greeting = "Good evening Student!";
+        }
+
+        document.getElementById("greeting").innerText = greeting;
+
+        // JavaScript function to load YouTube player into the iframe
+        function loadYouTubePlayer() {
+            var youtubePlayerDiv = document.getElementById('youtubePlayer');
+            youtubePlayerDiv.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/" frameborder="0" allowfullscreen></iframe>';
+        }
+
         // Your existing JavaScript code
+        const apiKey = 'AIzaSyANVKLt-ltn5j43kPD7AyeXSOf2F58cQNc';
+        const maxResults = 12;
+        let nextPageToken = '';
+        let currentChannelId = '';
+
+        function fetchVideos(channelId, pageToken = '') {
+            currentChannelId = channelId;
+            // Your fetchVideos function
+        }
+
+        function fetchPlaylistVideos(playlistId, pageToken = '') {
+            currentChannelId = playlistId;
+            // Your fetchPlaylistVideos function
+        }
+
+        function loadMoreVideos() {
+            if (currentChannelId !== '') {
+                if (currentChannelId.startsWith('PL')) {
+                    fetchPlaylistVideos(currentChannelId, nextPageToken);
+                } else {
+                    fetchVideos(currentChannelId, nextPageToken);
+                }
+            }
+        }
+
+        // Fetch default playlist videos on page load
+        window.onload = function() {
+            fetchPlaylistVideos('PLr6TOxpiWwuF5cD3S-qRViyJR5zRfe9xz');
+        };
     </script>
     <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
-
