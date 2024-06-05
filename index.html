@@ -2,8 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom YouTube</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1fcf3;
+            position: relative;
+            min-height: 100vh;
+        }
+        /* Your existing CSS styles */
+    </style>
 </head>
 <body>
     <div id="header">
@@ -13,6 +25,10 @@
                 CBSE Class Videos
             </button>
         </div>
+        <!-- Container for YouTube -->
+        <div id="youtubeContainer"></div>
+        <!-- Button to open YouTube -->
+        <button onclick="openYouTube()">Open YouTube</button>
     </div>
     <div id="videosContainer"></div>
     <div id="loadMoreButton">
@@ -34,23 +50,23 @@
 
         document.getElementById("greeting").innerText = greeting;
 
-        function fetchPlaylistVideos(playlistId) {
-            // You can load videos directly into the videosContainer here
-            // For simplicity, let's assume the videos are already loaded.
-            // You can replace this with your actual implementation.
-            document.getElementById('videosContainer').innerHTML = `
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=${playlistId}" frameborder="0" allowfullscreen></iframe>
-            `;
+        // Function to open YouTube within the page
+        function openYouTube() {
+            // Clear existing content in youtubeContainer
+            document.getElementById("youtubeContainer").innerHTML = "";
+            // Create iframe element
+            var iframe = document.createElement("iframe");
+            // Set attributes for iframe
+            iframe.setAttribute("src", "https://www.youtube.com/");
+            iframe.setAttribute("width", "100%");
+            iframe.setAttribute("height", "600px");
+            iframe.setAttribute("frameborder", "0");
+            // Append iframe to youtubeContainer
+            document.getElementById("youtubeContainer").appendChild(iframe);
         }
 
-        function loadMoreVideos() {
-            // You can implement loading more videos here if needed
-        }
-
-        // Fetch default playlist videos on page load
-        window.onload = function() {
-            fetchPlaylistVideos('PLr6TOxpiWwuF5cD3S-qRViyJR5zRfe9xz');
-        };
+        // Your existing JavaScript code for fetching videos...
     </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>
