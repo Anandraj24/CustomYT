@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open YouTube</title>
-    <style>
-        /* Your existing CSS styles */
-    </style>
+    <title>Custom YouTube</title>
 </head>
 <body>
     <div id="header">
         <h1 id="greeting"></h1>
-        <button onclick="openYouTube()">Open YouTube</button>
+        <div id="channelsContainer">
+            <button onclick="fetchPlaylistVideos('PLr6TOxpiWwuF5cD3S-qRViyJR5zRfe9xz')">
+                CBSE Class Videos
+            </button>
+        </div>
+    </div>
+    <div id="videosContainer"></div>
+    <div id="loadMoreButton">
+        <button onclick="loadMoreVideos()">Load More</button>
     </div>
     <script>
         // JavaScript to display greeting based on time of day
@@ -30,10 +34,23 @@
 
         document.getElementById("greeting").innerText = greeting;
 
-        // JavaScript function to open YouTube in a new window
-        function openYouTube() {
-            window.open("https://www.youtube.com/", "_self");
+        function fetchPlaylistVideos(playlistId) {
+            // You can load videos directly into the videosContainer here
+            // For simplicity, let's assume the videos are already loaded.
+            // You can replace this with your actual implementation.
+            document.getElementById('videosContainer').innerHTML = `
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=${playlistId}" frameborder="0" allowfullscreen></iframe>
+            `;
         }
+
+        function loadMoreVideos() {
+            // You can implement loading more videos here if needed
+        }
+
+        // Fetch default playlist videos on page load
+        window.onload = function() {
+            fetchPlaylistVideos('PLr6TOxpiWwuF5cD3S-qRViyJR5zRfe9xz');
+        };
     </script>
 </body>
 </html>
