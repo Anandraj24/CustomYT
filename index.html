@@ -12,8 +12,7 @@
 <body>
     <div id="header">
         <h1 id="greeting"></h1>
-        <div id="youtubeContainer"></div>
-        <button onclick="loadYouTube()">Open YouTube</button>
+        <button onclick="openYouTube()">Open YouTube</button>
     </div>
     <script>
         // JavaScript to display greeting based on time of day
@@ -31,10 +30,9 @@
 
         document.getElementById("greeting").innerText = greeting;
 
-        // JavaScript function to load YouTube into the iframe
-        function loadYouTube() {
-            var youtubeContainer = document.getElementById('youtubeContainer');
-            youtubeContainer.innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/" frameborder="0" allowfullscreen></iframe>';
+        // JavaScript function to open YouTube in a new window
+        function openYouTube() {
+            window.open("https://www.youtube.com/", "_self");
         }
     </script>
 </body>
