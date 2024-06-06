@@ -6,36 +6,274 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom YouTube</title>
     <style>
-        body {
+  body {
             font-family: Arial, sans-serif;
-            margin: 0;
+            margin: 2;
             padding: 0;
             background-color: #f1fcf3;
             position: relative;
-            min-height: 100vh;
+            min-height: 100vh; /* Ensure the body is at least as tall as the viewport */
         }
-        /* Your existing CSS styles */
+        #channelsContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            flex-wrap: wrap; /* Allow wrapping */
+        }
+  
+
+  
+  
+  
+        
+#channelsContainer button {
+    margin: 6px;
+    padding: 12px;
+    width: 160px; /* Fixed width for each button */
+    height: 80px; /* Fixed height for each button */
+    background-color: white;
+    color: #333;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    align-items:center ; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    font-size: 15px;
+    font-weight: bold;
+    flex-grow: 1;
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+#channelsContainer button img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 5px; /* Adjust the margin to create space between the image and text */
+}
+          
+        }.channel:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+  
+        
+        #channelsContainer button:hover {
+            background-color: #B2BABB;
+        }
+        
+        #videosContainer {
+            display: flex;
+            flex-wrap: wrap;
+          border-radius: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+  
+        
+        .video {
+            width: 370px;
+            margin: 5px;
+            padding: 0px;
+            
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+            border-radius: 0px;
+            overflow: hidden;
+        }
+        
+        .video iframe {
+            width: 100%;
+            height: 215px;
+          border-radius: 7px;
+          
+        }
+
+.playlistButtonContainer {
+    position: relative;
+    width:200px;
+    
+
+}
+        .video h2 {
+            font-size: 14px;
+            margin: 10px 0;
+          color:black;
+        }
+        
+        .video p {
+            font-size: 15px;
+            color: #666;
+            margin: 1px 0;
+        }
+
+        #loadMoreButton {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        #loadMoreButton button {
+            padding: 10px 20px;
+            background-color: #59ce8f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #loadMoreButton button:hover {
+            background-color: #0056b3;
+        }
+  
+  /* Adjustments for vertical mode (tablet) */
+        @media only screen and (orientation: portrait) {
+            .video {
+                width: calc(50% - 10px); /* Two videos per row with some spacing */
+            }
+        }
+
+        /* Adjustments for horizontal mode (tablet) */
+        @media only screen and (orientation: landscape) {
+            .video {
+                width: calc(33.33% - 10px); /* Three videos per row with some spacing */
+            }
+        }
+  
+  
+  
+  
+  
+  #header {
+            text-align: left;
+            margin-bottom: 20px;
+            margin-left:20px;
+            font-size: 15px;
+            color: #333;
+        }
+
+        #greeting {
+    font-weight: italic;
+    color: #76b5c5;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+  
     </style>
 </head>
 <body>
-    <div id="header">
+  
+   <div id="header">
         <h1 id="greeting"></h1>
-        <div id="channelsContainer">
-            <button onclick="fetchPlaylistVideos('PLr6TOxpiWwuF5cD3S-qRViyJR5zRfe9xz')">
-                CBSE Class Videos
-            </button>
-        </div>
-        <!-- Container for YouTube -->
-        <div id="youtubeContainer"></div>
-        <!-- Button to open YouTube -->
-        <button onclick="openYouTube()">Open YouTube</button>
     </div>
-    <div id="videosContainer"></div>
+  
+    <div id="channelsContainer">
+        <!-- Placeholder for channel buttons -->
+        <button onclick="fetchVideos('UCNn75PJi2J5OmZGuLCZGJPg')">
+            <img src="Mathongo1.png" alt="Mathongo Logo">
+            Mathongo
+        </button>
+        <button onclick="fetchVideos('UCgBmfNILAlXmGv3CsJ8oFJA')">
+            <img src="physicsgalaxy1.png" alt="Physics Galaxy Logo">
+            Physics Galaxy
+        </button>
+        <button onclick="fetchVideos('UCcMU5NE1Lmf4Fqpx7n9F3Sw')">
+            <img src="nexusjee1.png" alt="Nexus JEE Logo">
+            Nexus JEE
+        </button>
+      
+      
+        
+
+        <button onclick="fetchVideos('UCWsvAo4chGgZn-8PVi1c0bA')">
+            <img src="invisible.png" alt="invisible Mechanics Logo">
+            Invisible Mechanics
+        </button>
+      
+      
+        <button onclick="fetchVideos('UCKD62r2voInPrGceCP4MHUA')">
+            <img src="dexter.png" alt="dexterchem Logo">
+            Dexter Chemistry
+        </button>
+        <button onclick="fetchVideos('UCHWna16c7Ff0mY_QBVF2rXQ')">
+            <img src="Maths.png" alt="Maths Unplugged Logo">
+            Maths Unplugged
+        </button>
+        <button onclick="fetchVideos('UC7px6OmooQLmsJlYACR_n-A')">
+            <img src="eduniti1.png" alt="Eduniti Logo">
+            Eduniti
+        </button>
+        <button onclick="fetchVideos('UCDG_YP69cl42ly3pPy8-Liw')">
+            <img src="voraclasses1.png" alt="Vora Classes Logo">
+            Vora Classes
+        </button>
+        
+        <!-- Placeholder for playlists -->
+        <button onclick="fetchPlaylistVideos('PLcO6sQB3uK4_4p9SIz4UeL14x7d_JDYeV&si=g6yRNFqLdpogs65m')">
+            Revision Checklist
+        </button>
+        <button onclick="fetchPlaylistVideos('PL_A4M5IAkMaeWLEVxKBQ3c4QlYVzldHn7&si=Wc2wasdfNc2V7W8C')">
+            Advanced PYQ Physics
+        </button>
+        <button onclick="fetchPlaylistVideos('PLYFlGICvnvLjaSEn24Sceq-xNEYmAk8BV&si=9rDs-vnc_Zhr2XuT')">
+            Atoms Physics RY
+        </button>
+        
+        
+<button onclick="fetchPlaylistVideos('PLYipXr10_o91l_VgIY8sxIgzU8gxT9vif&si=AS-10HNuZyO889mn')">
+        Advanced Physics PYQ
+        </button>
+<button onclick="fetchPlaylistVideos('PLnG6YW15b0oSG49cB_H6Sxqcv6YHZ8y_-&si=xiURjVtgT8umj70Y')">
+            IIT Express Maths
+        </button>
+
+
+<button onclick="fetchPlaylistVideos('PLrHjxIp47OtV-kR3ZlkHEyU8aAZxVB2C8&si=OPW7S-gdnCPw0o1G')">
+            Master OC
+        </button>
+<button onclick="fetchPlaylistVideos('PLGhz9ljM7uOLOpTLvyzJzhhCTQkDW7aoa&si=yWE5Du9aEjejCFBn')">
+    
+            Dexter Advanced
+        </button>
+        
+        <button onclick="fetchPlaylistVideos('PLYVDsiuOZP5o7T58PG8SUiKECCzbY37J9&si=SGFY0qaoV_gK9adG')">
+          Advanced Booster  
+        </button>
+      
+      <button onclick="fetchPlaylistVideos('PLrHjxIp47OtUN_BGhKGGTSMKdjIvYB0JA&si=HmyIAV4Sh6eCpRQi')">
+          Master IOC
+        </button>
+      
+      
+      
+      
+        <button onclick="fetchPlaylistVideos('PLqkG39yUF_KgzcfQMWi-ajLSaAv2CfDbY&si=hNz-mpC6aw7Xq2Ri')">
+          Bootcamp Physics
+        </button>
+
+        
+      <button onclick="fetchPlaylistVideos('PLYFlGICvnvLi-6VMmu2Safry84f-jXoOX&si=npkOJxsYRdgC6fE1')">
+           Bounce Back 
+        </button>
+    </div>
+  
+  
+    
+
+    <div id="videosContainer">
+        <!-- Placeholder for videos -->
+    </div>
+
     <div id="loadMoreButton">
         <button onclick="loadMoreVideos()">Load More</button>
     </div>
+
     <script>
-        // JavaScript to display greeting based on time of day
+// JavaScript to display greeting based on time of day
         const now = new Date();
         const hour = now.getHours();
         let greeting;
@@ -50,23 +288,141 @@
 
         document.getElementById("greeting").innerText = greeting;
 
-        // Function to open YouTube within the page
-        function openYouTube() {
-            // Clear existing content in youtubeContainer
-            document.getElementById("youtubeContainer").innerHTML = "";
-            // Create iframe element
-            var iframe = document.createElement("iframe");
-            // Set attributes for iframe
-            iframe.setAttribute("src", "https://www.youtube.com/");
-            iframe.setAttribute("width", "100%");
-            iframe.setAttribute("height", "600px");
-            iframe.setAttribute("frameborder", "0");
-            // Append iframe to youtubeContainer
-            document.getElementById("youtubeContainer").appendChild(iframe);
-        }
+  
+  
+                // YouTube Data API key
+        const apiKey = 'AIzaSyANVKLt-ltn5j43kPD7AyeXSOf2F58cQNc';
+        //Number of videos to fetch per request
+        const maxResults = 12;
+        // Variable to keep track of the next page token
+        let nextPageToken = '';
+        // Variable to store current channel ID
+        let currentChannelId = '';
+  
+  
 
-        // Your existing JavaScript code for fetching videos...
-    </script>
-    <script src="https://www.youtube.com/iframe_api"></script>
+        // Function to fetch and display videos from channels
+        function fetchVideos(channelId, pageToken = '') {
+            currentChannelId = channelId;
+
+            fetch(`https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${maxResults}&pageToken=${pageToken}`)
+                .then(response => response.json())
+                .then(data => {
+                    const videos = data.items;
+                    nextPageToken = data.nextPageToken;
+
+                    const videosContainer = document.getElementById('videosContainer');
+                    
+                    if (pageToken === '') {
+                        videosContainer.innerHTML = '';
+                    }
+
+                    videos.forEach(video => {
+                        const videoId = video.id.videoId;
+                        const videoTitle = video.snippet.title;
+                        const videoDate = new Date(video.snippet.publishedAt).toLocaleDateString();
+
+                        const videoElement = `
+                            <div class="video">
+                                <iframe src="https://www.youtube.com/embed/${videoId}?rel=0" frameborder="0" allowfullscreen></iframe>
+                                <h2>${videoTitle}</h2>
+                                <p>Published on: ${videoDate}</p>
+                            </div>
+                        `;
+                        videosContainer.innerHTML += videoElement;
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching videos:', error);
+                });
+        }
+  
+  
+  const videoElement = `
+    <div class="video">
+        <div id="player-${videoId}"></div>
+        <h2>${videoTitle}</h2>
+        <p>Published on: ${videoDate}</p>
+    </div>
+`;
+
+videosContainer.innerHTML += videoElement;
+
+// Initialize YouTube Player API
+function onYouTubeIframeAPIReady() {
+    new YT.Player(`player-${videoId}`, {
+        height: '200',
+        width: '100%',
+        videoId: `${videoId}`,
+        playerVars: {
+            modestbranding: 1,
+            rel: 0
+        }
+    });
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+function fetchPlaylistVideos(playlistId, pageToken = '') {
+    currentChannelId = playlistId; // Set the currentChannelId to the playlistId
+
+    fetch(`https://www.googleapis.com/youtube/v3/playlistItems?key=${apiKey}&playlistId=${playlistId}&part=snippet&maxResults=${maxResults}&pageToken=${pageToken}`)
+        .then(response => response.json())
+        .then(data => {
+            const playlistVideos = data.items;
+            nextPageToken = data.nextPageToken;
+
+            const videosContainer = document.getElementById('videosContainer');
+
+            if (pageToken === '') {
+                videosContainer.innerHTML = '';
+            }
+
+            playlistVideos.forEach(video => {
+                const videoId = video.snippet.resourceId.videoId;
+                const videoTitle = video.snippet.title;
+                const videoDate = new Date(video.snippet.publishedAt).toLocaleDateString();
+
+                const videoElement = `
+                    <div class="video">
+                       <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+                        <h2>${videoTitle}</h2>
+                        <p>Published on: ${videoDate}</p>
+                    </div>
+                `;
+                videosContainer.innerHTML += videoElement;
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching playlist videos:', error);
+        });
+}
+          
+          
+          
+          
+        function loadMoreVideos() {
+    if (currentChannelId !== '') {
+        if (currentChannelId.startsWith('PL')) {
+            // If the current channel ID starts with 'PL', it's a playlist ID
+            fetchPlaylistVideos(currentChannelId, nextPageToken);
+        } else {
+            // Otherwise, it's a channel ID
+            fetchVideos(currentChannelId, nextPageToken);
+        }
+    }
+}
+  </script>
+
+ <script src="https://www.youtube.com/iframe_api"></script>
+
 </body>
-</html>
+    </html>
+    
